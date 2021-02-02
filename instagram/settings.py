@@ -43,6 +43,7 @@ INSTALLED_APPS += [
     'debug_toolbar',
     'api',
     'contents',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -124,6 +125,17 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# AWS S3
+AWS_ACCESS_KEY_ID = 'AKIA6KRQ36MUN3TYLW7M'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_DEFAULT_ACL = 'public-read'
+AWS_REGION = 'ap-northeast-2'
+AWS_STORAGE_BUCKET_NAME = 'lyh-storage'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (
+    AWS_STORAGE_BUCKET_NAME, AWS_REGION)
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 # Static files (CSS, JavaScript, Images)

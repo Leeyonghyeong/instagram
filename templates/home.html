@@ -110,7 +110,7 @@
         */
 
         $('#logout').click(function () {
-            $.get('/apis/v1/users/logout/', {}, function () {
+            $.get('/api/v1/users/logout/', {}, function () {
                 location.reload();
             });
         });
