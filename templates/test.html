@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block body %}
+{{ request.user }}
+<input type="text" id="username">
+<input type="password" id="password">
+<button id="login">Login</button>
+<button id="logout">Logout</button>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<script>
+  $(document).ready(function () {
+    $('#login').click(function () {
+      $.post('/apis/v1/users/login/', { 'username': $('#username').val(), 'password': $('#password').val() }, function () {
+        location.reload();
+      }).fail(function (data) {
+        alert(data.responseJSON.message);
+      });
+    });
+    $('#logout').click(function () {
+      $.get('/apis/v1/users/logout/', {}, function () {
+        location.reload();
+      });
+    });
+  });
+</script>
+{% endblock %}
