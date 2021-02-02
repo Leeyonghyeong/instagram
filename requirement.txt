@@ -1,0 +1,7 @@
+django
+pillow
+django-social-share
+django-taggit
+django-debug-toolbar
+boto3
+django-storages
